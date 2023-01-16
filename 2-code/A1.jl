@@ -10,7 +10,7 @@ using Revise # for tacking into account orther changements
 includet("../2-code/Functions.jl") # for tacking into acount Functions.jl file  
 using .Growth_functions # caling the Growth_functions module 
 
-df = DataFrame(XLSX.readtable("./1-data/Compil_tronc.xlsx", "tri_Dendrometre")) # reading data
+df = DataFrame(XLSX.readtable("./1-data/Niakhar_Compil_tronc.xlsx", "tri_Dendrometre")) # reading data
 
 """
  in Let ... end function , we aggregate two actions on data: 
@@ -28,16 +28,24 @@ end
 2. calculating the cumulated growth 
 """
 
-
 growth_setp = growth(df[!, :dendrometre])
 cumul_growth_setp = cumulated_growth(growth_setp)
 
 
 """
-1. making a dataframe 
-2. exporting calculations as an excel file 
+1. add dates column
+2. making a dataframe 
+3. exporting calculations as an excel file 
 """
 
-df_A1 = DataFrame(Growth=growth_setp, cumul=cumul_growth_setp)
-XLSX.writetable("arbre_A1.xlsx", df_A1)
+length(growth_setp) #  cheking for the length
+length(cumul_growth_setp) # cheking for the length
+length(df[!, :date]) # cheking for the length
 
+col_dates = df[!, :date] # taking the date column
+selected = col_dates[1:61] # selected rows acording  to the growth applied function 
+length(selected) # cheking for the length
+
+
+df_A1 = DataFrame(Dates=selected, Growth_mm=growth_setp, cumul_mm=cumul_growth_setp)
+XLSX.writetable("arbre_A1.xlsx", df_A1)
