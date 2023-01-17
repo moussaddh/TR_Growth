@@ -19,7 +19,7 @@ function ficelle_F1(Dframe)
     return Dframe
 end
 
-# 
+# Short function to take all tree names 
 
 function tree_growth_files(Dframe)
     for i in unique(Dframe[!, :arbres])
@@ -27,10 +27,9 @@ function tree_growth_files(Dframe)
     end
 end
 
-tree_growth_files(df)
-
-
-
+# Want to write a global function that : 
+# read a dataframe 
+# compute growth for each tree in :arbres column 
 
 function tree_growth_files(Dframe)
     col_dates = Dframe[!, :date]
