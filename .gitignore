@@ -1,6 +1,7 @@
 
 Manifest.toml
 /1-data/*.xlsx
+/3-results/*.xlsx
 arbre_A1.xlsx
 arbre_A2.xlsx
 
