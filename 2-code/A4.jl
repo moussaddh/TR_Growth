@@ -43,7 +43,7 @@ length(cumul_growth_setp) # cheking for the length
 length(df[!, :date]) # cheking for the length
 
 col_dates = df[!, :date] # taking the date column
-selected = col_dates[1:61] # selected rows acording  to the growth applied function 
+selected = col_dates[1:end-1] # selected rows acording  to the growth applied function 
 length(selected) # cheking for the length
 
 
