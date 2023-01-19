@@ -20,7 +20,7 @@ df = DataFrame(XLSX.readtable("./1-data/Dahra_Compil_tronc.xlsx", "Raddianna")) 
 
 let
     #@subset!(df, :ficelles .== "F1")
-    @subset!(df, :ID .== "R2")
+    @subset!(df, :ID .== "R4")
 end
 
 """
@@ -28,7 +28,7 @@ end
 2. calculating the cumulated growth 
 """
 
-growth_setp = growth(df[!, :Dendro_Plast])
+growth_setp = growth(df[!, :Dendro_Metal])
 cumul_growth_setp = cumulated_growth(growth_setp)
 
 
@@ -46,19 +46,8 @@ col_dates = df[!, :Date] # taking the date column
 selected = col_dates[1:end-1] # selected rows acording  to the growth applied function 
 length(selected) # cheking for the length
 
-df_R2 = DataFrame(Dates=selected, Growth_cm=growth_setp, cumul_cm=cumul_growth_setp)
-
-function cm_to_mm(x)
-    n = x * 10
-    return n
-end
-
-let
-    df_R2.Growth_mm = cm_to_mm.(df_R2[!, :Growth_cm])
-    df_R2.cumul_mm = cm_to_mm.(df_R2[!, :cumul_cm])
-end
-
-XLSX.writetable("arbre_R2.xlsx", df_R2)
+df_R4 = DataFrame(Dates=selected, Growth_cm=growth_setp, cumul_cm=cumul_growth_setp)
+XLSX.writetable("arbre_R4.xlsx", df_R4)
 
 
 
