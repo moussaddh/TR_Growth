@@ -23,7 +23,9 @@ df_bigening.grp = cut(df_bigening[!, :circonference], 3)
 df_bigening_Q3 = filter(:grp => x -> x .== "Q3: [175.5, 231.5]", df_bigening)
 df_bigening_Q2 = filter(:grp => x -> x .== "Q2: [145.9, 175.5)", df_bigening)
 df_bigening_Q1 = filter(:grp => x -> x .== "Q1: [102.0, 145.9)", df_bigening)
+
 # avoid the date column 
+
 select!(df_bigening_Q3, Not([:date]))
 select!(df_bigening_Q2, Not([:date]))
 select!(df_bigening_Q1, Not([:date]))
