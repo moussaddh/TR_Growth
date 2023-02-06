@@ -1,7 +1,9 @@
 
 Manifest.toml
 /1-data/*.xlsx
+/4-output_files/*.xlsx
 /3-results/*.xlsx
+/3-results/*.png
 /3-results/Trunk_Ar/*.xlsx
 /3-results/Trunk_Fa/*.xlsx
 arbre_A1.xlsx
